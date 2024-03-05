@@ -9,6 +9,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+
+      - name: Login to Azure CLI
+        run: |
+          az login -u ${{ secrets.AZURE_USERNAME }} -p ${{ secrets.AZURE_PASSWORD }}
       
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v1
@@ -22,3 +26,7 @@ jobs:
           terraform plan -input=false -var="admin_password=${{ secrets.VM_ADMIN_PASSWORD }}"
           env:
           TF_VAR_admin_password: ${{ secrets.VM_ADMIN_PASSWORD }}
+
+      - name: Logout of Azure
+        if: always()
+        run: az logout
