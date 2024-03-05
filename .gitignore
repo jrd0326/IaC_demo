@@ -1,0 +1,32 @@
+# Local .terraform directories
+**/.terraform/*
+# Lets try it the other way
+**\.terraform\*
+# Lets try excluding .exe files
+**\.exe\*
+
+# .tfstate files
+*.tfstate
+*.tfstate.*
+
+# Crash log files
+crash.log
+
+# Exclude all .tfvars files, which might contain sensitive data, such as
+# password, private keys, and other secrets. Alternatively, you could
+# exclude specific .tfvars files if you have ones that can be shared.
+*.tfvars
+*.tfvars.json
+
+# Ignore override files as they are usually used to override resources locally and should not be checked in
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# Ignore CLI configuration files
+.terraformrc
+terraform.rc
+
+# Ignore any .terraform.lock.hcl files, which may contain provider selections that should not be versioned
+.terraform.lock.hcl
