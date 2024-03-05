@@ -25,7 +25,7 @@ jobs:
           terraform init
           terraform plan -input=false -var="admin_password=${{ secrets.VM_ADMIN_PASSWORD }}"
           env:
-          TF_VAR_admin_password: ${{ secrets.VM_ADMIN_PASSWORD }}
+            TF_VAR_admin_password: ${{ secrets.VM_ADMIN_PASSWORD }}
 
       - name: Logout of Azure
         if: always()
