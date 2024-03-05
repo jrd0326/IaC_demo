@@ -2,6 +2,12 @@ provider "azurerm" {
     features {}
 }
 
+variable "admin_password" {
+  description = "The admin password for the VM"
+  type        = string
+  sensitive   = true
+}
+
 data "azurerm_resource_group" "rg" {
     name     = "rg-web-services-php-01"
     #location = "South Central US"
@@ -32,7 +38,7 @@ resource "azurerm_linux_virtual_machine" "vm" {
     size                = "Standard_D2s_v3"
     admin_username      = "untsystem"
     disable_password_authentication = false
-    admin_password      = "m@n1c077im@n1c077i"
+    admin_password = var.admin_password
     network_interface_ids = [
         azurerm_network_interface.nic.id,
     ]
